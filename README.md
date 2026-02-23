@@ -4,174 +4,70 @@
 
 ## Русский
 
-BrainFlow — современный плавающий виджет фокуса для вкладок браузера, ориентированный на ADHD-friendly сценарии работы.
+BrainFlow — плавающий виджет фокуса для вкладок браузера.
+Он помогает держать ритм работы с таймером и не выпадать в прокрастинацию.
 
-### Что умеет
+### Возможности
 
-- Плавающий виджет на любой странице
-- Режимы таймера Фокус/Отдых: `10/3` и `15/5`
-- Кнопки Старт / Пауза / Сброс с сохранением состояния
-- Компактный свернутый режим таймера
+- Плавающий и перетаскиваемый виджет
+- Таймеры `10/3` и `15/5` (фокус/отдых)
+- Старт, пауза, сброс
+- Свернутый компактный режим
 - Учёт выполненных задач и дневного прогресса
-- Антипрокрастинационный перехватчик (смена домена + напоминание при неактивности)
-- Интерфейс на RU/EN
-- 4 темы оформления: `calm_teal`, `deep_blue`, `soft_amber`, `mono`
-- Встроенная страница статистики с календарём и стриком
-- Страница настроек (язык, тема, режим по умолчанию, сигналы, перехватчик)
+- Напоминания при отвлечении (смена сайта и неактивность)
+- RU/EN интерфейс
+- 4 темы: `calm_teal`, `deep_blue`, `soft_amber`, `mono`
+- Статистика с календарём и серией дней
 - Локальное хранение данных (`chrome.storage.local`)
 
-### Поддерживаемые браузеры
+### Поддержка браузеров
 
 - Chrome / Edge (Manifest V3)
-- Safari (через официальный Safari Web Extension converter)
+- Safari (через конвертацию Safari Web Extension)
 
-### Установка для разработки (Chrome)
+### Быстрый запуск (Chrome)
 
 1. Откройте `chrome://extensions`
 2. Включите **Developer mode**
 3. Нажмите **Load unpacked**
-4. Выберите папку проекта:
-   - `/Users/WorkShop/QA/ BrainFlow`
+4. Выберите папку `/Users/WorkShop/QA/ BrainFlow`
 
-### Конвертация для Safari
+### Документация
 
-```bash
-xcrun safari-web-extension-converter "/Users/WorkShop/QA/ BrainFlow"
-```
-
-Далее:
-
-1. Откройте сгенерированный Xcode-проект
-2. Настройте Team и signing
-3. Соберите и запустите
-4. Включите расширение в настройках Safari
-
-### Структура проекта
-
-- `manifest.json` — манифест расширения (MV3)
-- `src/content.js` / `src/content.css` — логика и стили виджета на сайтах
-- `src/background.js` — service worker и интеграция с событиями вкладок
-- `src/popup.*` — popup расширения
-- `src/options/*` — интерфейс настроек
-- `src/stats.*` — интерфейс статистики и календаря
-- `assets/icons/*` — иконки расширения
-- `tools/release-check.js` — автоматическая проверка перед релизом
-- `store/*` — материалы для стора (RU/EN)
-- `PRIVACY_POLICY.md` — политика конфиденциальности
-- `RELEASE_CHECKLIST.md` — ручной чеклист релиза
-
-### Проверка перед релизом
-
-```bash
-node tools/release-check.js
-```
-
-Ручной чеклист:
-
-- `RELEASE_CHECKLIST.md`
-
-### Сборка ZIP для загрузки в Store
-
-```bash
-zip -r BrainFlow-v1.0.0.zip . -x "*.git*" "*.DS_Store" "*.zip"
-```
-
-### Приватность
-
-BrainFlow не отправляет пользовательские данные на внешние серверы.
-Все настройки и статистика хранятся локально в браузере.
-
-Подробнее: `PRIVACY_POLICY.md`
-
-### Материалы для публикации
-
-- `store/GO_LIVE.md`
-- `store/CHROME_LISTING_RU.md`
-- `store/CHROME_LISTING_EN.md`
+- Политика конфиденциальности: `PRIVACY_POLICY.md`
+- Публикация и релизные шаги: `DEVELOPER_RELEASE.md`
 
 ## English
 
-BrainFlow is a modern floating focus widget for browser tabs, designed for ADHD-friendly work sessions.
+BrainFlow is a floating focus widget for browser tabs.
+It helps maintain a work rhythm with timer cycles and anti-distraction prompts.
 
-### What it does
+### Features
 
-- Floating draggable widget on any page
-- Focus/Break timer modes: `10/3` and `15/5`
-- Start / Pause / Reset flow with persisted state
-- Collapsed compact timer mode
-- Task completion tracking with daily progress
-- Procrastination interceptor (domain change + inactivity reminder)
+- Floating draggable widget
+- `10/3` and `15/5` focus/break timer modes
+- Start, pause, reset controls
+- Collapsed compact mode
+- Task completion and daily progress tracking
+- Interruption prompts on domain change and inactivity
 - RU/EN interface
-- 4 visual themes: `calm_teal`, `deep_blue`, `soft_amber`, `mono`
-- Built-in stats page with monthly calendar and streak
-- Settings page (language, theme, default mode, signals, interceptor)
+- 4 themes: `calm_teal`, `deep_blue`, `soft_amber`, `mono`
+- Statistics page with calendar and streak
 - Local-only data storage (`chrome.storage.local`)
 
 ### Browser support
 
 - Chrome / Edge (Manifest V3)
-- Safari (via official Safari Web Extension conversion)
+- Safari (via Safari Web Extension conversion)
 
-### Install for development (Chrome)
+### Quick start (Chrome)
 
 1. Open `chrome://extensions`
 2. Enable **Developer mode**
 3. Click **Load unpacked**
-4. Select project folder:
-   - `/Users/WorkShop/QA/ BrainFlow`
+4. Select `/Users/WorkShop/QA/ BrainFlow`
 
-### Safari conversion
+### Documentation
 
-```bash
-xcrun safari-web-extension-converter "/Users/WorkShop/QA/ BrainFlow"
-```
-
-Then:
-
-1. Open generated Xcode project
-2. Configure Team and signing
-3. Build and run
-4. Enable extension in Safari settings
-
-### Project structure
-
-- `manifest.json` — extension manifest (MV3)
-- `src/content.js` / `src/content.css` — widget logic and styles on pages
-- `src/background.js` — service worker and tab/events integration
-- `src/popup.*` — browser action popup
-- `src/options/*` — settings UI
-- `src/stats.*` — statistics and calendar UI
-- `assets/icons/*` — extension icons
-- `tools/release-check.js` — release sanity check script
-- `store/*` — store listing materials (RU/EN)
-- `PRIVACY_POLICY.md` — privacy policy
-- `RELEASE_CHECKLIST.md` — manual QA checklist
-
-### Release checks
-
-```bash
-node tools/release-check.js
-```
-
-Manual checklist:
-
-- `RELEASE_CHECKLIST.md`
-
-### Build ZIP for store upload
-
-```bash
-zip -r BrainFlow-v1.0.0.zip . -x "*.git*" "*.DS_Store" "*.zip"
-```
-
-### Privacy
-
-BrainFlow does not send user data to external servers.
-All settings and stats are stored locally in browser storage.
-
-Details: `PRIVACY_POLICY.md`
-
-### Store submission materials
-
-- `store/GO_LIVE.md`
-- `store/CHROME_LISTING_RU.md`
-- `store/CHROME_LISTING_EN.md`
+- Privacy policy: `PRIVACY_POLICY.md`
+- Release and publishing guide: `DEVELOPER_RELEASE.md`
