@@ -1,0 +1,360 @@
+#brainflow-root {
+  --bf-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --bf-text: #e8f7f6;
+  --bf-muted: rgba(232, 247, 246, 0.82);
+  --bf-surface: rgba(10, 35, 37, 0.72);
+  --bf-surface-border: rgba(255, 255, 255, 0.2);
+  --bf-shadow-1: rgba(34, 197, 94, 0.24);
+  --bf-shadow-2: rgba(8, 20, 22, 0.44);
+  --bf-button-bg: rgba(255, 255, 255, 0.1);
+  --bf-button-border: rgba(255, 255, 255, 0.2);
+  --bf-button-text: #eafffb;
+  --bf-ring-active: #14b8a6;
+  --bf-ring-track: rgba(255, 255, 255, 0.12);
+  --bf-accent-a: #22c55e;
+  --bf-accent-b: #14b8a6;
+  --bf-interceptor-bg: linear-gradient(90deg, rgba(34, 197, 94, 0.96), rgba(20, 184, 166, 0.96));
+  --bf-interceptor-shadow: rgba(20, 184, 166, 0.45);
+  --bf-collapsed-center: rgba(8, 29, 30, 0.95);
+
+  all: initial;
+  position: fixed;
+  display: block;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483647;
+  font-family: var(--bf-font);
+}
+
+#brainflow-root[data-theme="deep_blue"] {
+  --bf-text: #eaf1ff;
+  --bf-muted: rgba(224, 235, 255, 0.82);
+  --bf-surface: rgba(10, 18, 38, 0.74);
+  --bf-shadow-1: rgba(59, 130, 246, 0.24);
+  --bf-shadow-2: rgba(5, 8, 20, 0.5);
+  --bf-ring-active: #3b82f6;
+  --bf-accent-a: #3b82f6;
+  --bf-accent-b: #06b6d4;
+  --bf-interceptor-bg: linear-gradient(90deg, rgba(59, 130, 246, 0.96), rgba(6, 182, 212, 0.96));
+  --bf-interceptor-shadow: rgba(59, 130, 246, 0.5);
+  --bf-collapsed-center: rgba(10, 16, 33, 0.96);
+}
+
+#brainflow-root[data-theme="soft_amber"] {
+  --bf-text: #fff4dc;
+  --bf-muted: rgba(255, 238, 204, 0.84);
+  --bf-surface: rgba(43, 24, 6, 0.72);
+  --bf-shadow-1: rgba(245, 158, 11, 0.3);
+  --bf-shadow-2: rgba(20, 9, 2, 0.5);
+  --bf-ring-active: #f59e0b;
+  --bf-accent-a: #f59e0b;
+  --bf-accent-b: #f97316;
+  --bf-interceptor-bg: linear-gradient(90deg, rgba(245, 158, 11, 0.96), rgba(249, 115, 22, 0.96));
+  --bf-interceptor-shadow: rgba(245, 158, 11, 0.46);
+  --bf-collapsed-center: rgba(31, 18, 5, 0.96);
+}
+
+#brainflow-root[data-theme="mono"] {
+  --bf-text: #f3f4f6;
+  --bf-muted: rgba(229, 231, 235, 0.82);
+  --bf-surface: rgba(31, 41, 55, 0.76);
+  --bf-shadow-1: rgba(156, 163, 175, 0.22);
+  --bf-shadow-2: rgba(11, 14, 20, 0.52);
+  --bf-ring-active: #9ca3af;
+  --bf-accent-a: #9ca3af;
+  --bf-accent-b: #d1d5db;
+  --bf-interceptor-bg: linear-gradient(90deg, rgba(107, 114, 128, 0.96), rgba(156, 163, 175, 0.96));
+  --bf-interceptor-shadow: rgba(156, 163, 175, 0.42);
+  --bf-collapsed-center: rgba(22, 29, 39, 0.96);
+}
+
+#brainflow-root * {
+  box-sizing: border-box;
+}
+
+.brainflow-widget {
+  width: 272px;
+  color: var(--bf-text);
+  background: var(--bf-surface);
+  border: 1px solid var(--bf-surface-border);
+  border-radius: 16px;
+  padding: 12px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 24px var(--bf-shadow-1), 0 16px 36px var(--bf-shadow-2);
+  user-select: none;
+  position: relative;
+}
+
+.brainflow-widget.is-collapsed {
+  width: 146px !important;
+  padding: 4px;
+  border: 1px solid var(--bf-surface-border);
+  border-radius: 16px;
+  background: color-mix(in oklab, var(--bf-surface) 86%, transparent);
+  box-shadow: 0 0 10px var(--bf-shadow-1), 0 8px 18px var(--bf-shadow-2);
+  backdrop-filter: blur(10px);
+}
+
+.brainflow-collapsed {
+  width: 138px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.brainflow-collapsed-ring {
+  width: 138px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--bf-collapsed-center) 92%, transparent);
+  box-shadow: 0 0 16px var(--bf-shadow-1);
+}
+
+.brainflow-collapsed-track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.brainflow-collapsed-dash {
+  fill: none;
+  stroke: color-mix(in oklab, var(--bf-accent-a) 78%, #ffffff 22%);
+  stroke-width: 2.2;
+  stroke-dasharray: 6 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.92;
+}
+
+.brainflow-collapsed-ring.running .brainflow-collapsed-dash {
+  animation: brainflow-dash-flow 6s linear infinite;
+}
+
+.brainflow-collapsed-time {
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--bf-button-text);
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 6px color-mix(in oklab, var(--bf-shadow-1) 55%, transparent);
+}
+
+.brainflow-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  cursor: move;
+}
+
+.brainflow-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--bf-accent-a), var(--bf-accent-b));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brainflow-icon-btn,
+.brainflow-lang-btn {
+  appearance: none;
+  border: 1px solid var(--bf-button-border);
+  border-radius: 9px;
+  min-width: 28px;
+  height: 28px;
+  background: var(--bf-button-bg);
+  color: var(--bf-button-text);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.brainflow-head-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.brainflow-ring {
+  width: 126px;
+  height: 126px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--bf-ring-active) 100%, var(--bf-ring-track) 0);
+  position: relative;
+}
+
+.brainflow-ring::after {
+  content: "";
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
+  background: var(--bf-collapsed-center);
+  position: absolute;
+}
+
+.brainflow-time {
+  position: relative;
+  z-index: 1;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--bf-button-text);
+}
+
+.brainflow-phase {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: var(--bf-muted);
+}
+
+.brainflow-mode {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.brainflow-mode button,
+.brainflow-controls button,
+.brainflow-done {
+  appearance: none;
+  border: 1px solid var(--bf-button-border);
+  background: var(--bf-button-bg);
+  color: var(--bf-button-text);
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.brainflow-mode button.active,
+.brainflow-done {
+  background: linear-gradient(90deg, var(--bf-accent-a), var(--bf-accent-b));
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.brainflow-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.brainflow-done {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.brainflow-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.brainflow-footer-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.brainflow-brains {
+  min-height: 24px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  max-width: 148px;
+}
+
+.brainflow-brain {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--bf-accent-a) 75%, #ffffff 25%);
+  box-shadow: 0 0 6px var(--bf-shadow-1);
+  transform: scale(0.75);
+  opacity: 0;
+  animation: brainflow-pop 220ms ease-out forwards;
+  flex: 0 0 auto;
+}
+
+.brainflow-brain.milestone-5 {
+  opacity: 1;
+  animation: brainflow-pop 220ms ease-out forwards, brainflow-pulse 900ms ease-in-out 220ms infinite;
+}
+
+.brainflow-brain-more {
+  width: auto;
+  min-width: 22px;
+  padding: 0 6px;
+  height: 16px;
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  color: var(--bf-button-text);
+  background: color-mix(in oklab, var(--bf-button-bg) 70%, var(--bf-accent-a) 30%);
+  box-shadow: none;
+  transform: none;
+  opacity: 1;
+  animation: none;
+}
+
+.brainflow-interceptor {
+  position: fixed;
+  top: 24px;
+  right: -460px;
+  z-index: 2147483647;
+  max-width: 380px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  background: var(--bf-interceptor-bg);
+  box-shadow: 0 10px 35px var(--bf-interceptor-shadow);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.brainflow-interceptor.show {
+  animation: brainflow-slide 5.2s ease forwards;
+}
+
+@keyframes brainflow-pop {
+  0% { opacity: 0; transform: scale(0.6); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes brainflow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 4px var(--bf-shadow-1)); }
+  50% { filter: drop-shadow(0 0 12px var(--bf-shadow-1)); }
+}
+
+@keyframes brainflow-slide {
+  0% { right: -460px; opacity: 0; transform: scale(0.96); }
+  12% { right: 24px; opacity: 1; transform: scale(1); }
+  30% { right: 24px; opacity: 1; transform: scale(1.06); }
+  85% { right: 24px; opacity: 1; transform: scale(1); }
+  100% { right: 24px; opacity: 0; }
+}
+
+@keyframes brainflow-dash-flow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -340; }
+}
