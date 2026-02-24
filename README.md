@@ -7,6 +7,16 @@
 BrainFlow — плавающий виджет фокуса для вкладок браузера.
 Он помогает держать ритм работы с таймером и не выпадать в прокрастинацию.
 
+## Application Preview
+  <img src="https://github.com/Dobryev-qa/BrainFlow/blob/main/App_preview/BrainFlow.gif" />
+  
+<p align="left">
+  <img src="https://github.com/Dobryev-qa/BrainFlow/blob/main/App_preview/green.png" width="180"/>
+  <img src="https://github.com/Dobryev-qa/BrainFlow/blob/main/App_preview/blue.png" width="180"/>
+  <img src="https://github.com/Dobryev-qa/BrainFlow/blob/main/App_preview/orange.png" width="195"/>
+  <img src="https://github.com/Dobryev-qa/BrainFlow/blob/main/App_preview/gray.png" width="180"/>
+</p>
+
 ### Возможности
 
 - Плавающий и перетаскиваемый виджет
